@@ -31,7 +31,7 @@ public class UnitController : BaseUnitController {
         moveDistance = 15;
         //abilities = new string[3] { "RicochetAttack", "BouncingBomb", "RollingBomb" };
 
-        resourceBar =  Instantiate(resourceBarsPrefab, GameObject.Find("WorldUICanvas").transform);
+        resourceBar =  Instantiate(resourceBarsPrefab, GameObject.Find("WorldUICanvasPlayer").transform);
         healthBar = resourceBar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
         energyBar = resourceBar.transform.GetChild(1).GetChild(0).GetComponent<Image>();
         healthBar.fillAmount = 1;
@@ -41,10 +41,7 @@ public class UnitController : BaseUnitController {
         playerUnits.Add(gameObject);
 
         equipment = (Collection<IItemInstance>)CollectionRegistry.byName.Get("Unit " + playerUnits.Count + " Frames");
-    }
-	
-	void Update () {
-
+        StartCoroutine("TempInvinicibility", .1f);
     }
 
     public void Select() {

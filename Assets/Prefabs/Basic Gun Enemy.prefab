@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf2ffe351db9a741ac71b0acbb3ee9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincible: 0
+  invincible: 1
   damageTextPrefab: {fileID: 9058248135441907224, guid: 5634b187a113cc648b69a9f805113f8f,
     type: 3}
   resourceBarsPrefab: {fileID: 1344597952803746336, guid: 3fd14b5a0f7faf044896ab91e07cf38a,

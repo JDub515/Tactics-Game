@@ -21,16 +21,6 @@ public abstract class BaseUnitController : MonoBehaviour {
     public GameObject resourceBarsPrefab;
     public GameObject explosionPrefab;
 
-    // Start is called before the first frame update
-    void Start() {
-        
-    }
-
-    // Update is called once per frame
-    void Update() {
-        
-    }
-
     void LateUpdate() {
         resourceBar.transform.position = transform.position + 1.2f * Vector3.up + new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z).normalized;
         resourceBar.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);

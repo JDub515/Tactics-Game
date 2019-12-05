@@ -22,7 +22,7 @@ public class FogParticleController : MonoBehaviour {
 
     private Vector3 heightModifier;
     private Color32[] fadeColors;
-    private Vector3[] enemeyVisionVectors;
+    private Vector3[] enemyVisionVectors;
 
     private int xSize;
     private int zSize;
@@ -79,7 +79,7 @@ public class FogParticleController : MonoBehaviour {
         particles = new Particle[particleCount];
         particleHolder = new ParticleSystem.Particle[particleCount];
 
-        enemeyVisionVectors = new Vector3[] {new Vector3(.5f, .5f, .5f), new Vector3(-.5f, .5f, .5f), new Vector3(.5f, .5f, -.5f), new Vector3(-.5f, .5f, -.5f),
+        enemyVisionVectors = new Vector3[] {new Vector3(.5f, .5f, .5f), new Vector3(-.5f, .5f, .5f), new Vector3(.5f, .5f, -.5f), new Vector3(-.5f, .5f, -.5f),
                                              new Vector3(.5f, -.5f, .5f), new Vector3(-.5f, -.5f, .5f), new Vector3(.5f, -.5f, -.5f), new Vector3(-.5f, -.5f, -.5f)};
 
         StartCoroutine("DelayedUpdate");
@@ -250,7 +250,7 @@ public class FogParticleController : MonoBehaviour {
             Vector3 position = unit.transform.position;
             position = new Vector3(Mathf.Round(position.x), Mathf.Round(position.y + .4f), Mathf.Round(position.z));
             unit.GetComponent<EnemyController>().HideUnit();
-            foreach (Vector3 mod in enemeyVisionVectors) {
+            foreach (Vector3 mod in enemyVisionVectors) {
                 if (particles[IndexFromPosition(position + mod)].inVision) {
                     unit.GetComponent<EnemyController>().ShowUnit();
                     break;

@@ -1106,12 +1106,12 @@ GameObject:
   - component: {fileID: 410184634}
   - component: {fileID: 410184633}
   - component: {fileID: 410184632}
-  - component: {fileID: 410184631}
   - component: {fileID: 410184630}
   - component: {fileID: 410184629}
   - component: {fileID: 410184628}
   - component: {fileID: 410184627}
   - component: {fileID: 410184626}
+  - component: {fileID: 410184631}
   m_Layer: 15
   m_Name: Inventory Collection
   m_TagString: Untagged
@@ -1243,6 +1243,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d3360e5c71d0ebc4981fb8098e306fd5, type: 2}
   - {fileID: 11400000, guid: 07c0ca316474b8a4193288d4e59c3e8f, type: 2}
   - {fileID: 11400000, guid: 3b9227149827f174abd5eb53ac2e64c5, type: 2}
+  - {fileID: 11400000, guid: 619daac927358ec4bbaa914477fe32d4, type: 2}
+  - {fileID: 11400000, guid: 386f579ef22d29f45b832ebed238ebf4, type: 2}
+  - {fileID: 11400000, guid: a6f3060f9cfa2b542b809de388c0d0e7, type: 2}
+  - {fileID: 11400000, guid: 190855a560e23b7499dcdf7ac019c5db, type: 2}
+  - {fileID: 11400000, guid: 3ed627b816842c043935c41bfa9a0e59, type: 2}
+  - {fileID: 11400000, guid: 3b9227149827f174abd5eb53ac2e64c5, type: 2}
+  - {fileID: 11400000, guid: 3ed627b816842c043935c41bfa9a0e59, type: 2}
+  - {fileID: 11400000, guid: 386f579ef22d29f45b832ebed238ebf4, type: 2}
 --- !u!114 &410184632
 MonoBehaviour:
   m_ObjectHideFlags: 0

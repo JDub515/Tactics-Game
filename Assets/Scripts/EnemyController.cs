@@ -43,11 +43,7 @@ public class EnemyController : BaseUnitController {
         }
 
         enemyUnits.Add(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update() {
-        
+        StartCoroutine("TempInvinicibility", .1f);
     }
 
     IEnumerator TakeTurn() {
@@ -246,6 +242,7 @@ public class EnemyController : BaseUnitController {
                 if (dist < maxEngagementDistance && dist > minEngagementDistance) {
                     rb.velocity = Vector3.zero;
                     rb.isKinematic = false;
+                    StartCoroutine("TempInvinicibility", .5f);
                     yield break;
                 }
             }
@@ -254,6 +251,7 @@ public class EnemyController : BaseUnitController {
         yield return new WaitForFixedUpdate();
         rb.velocity = Vector3.zero;
         rb.isKinematic = false;
+        StartCoroutine("TempInvinicibility", .5f);
     }
 
     private IEnumerator OnTriggerExit(Collider collider) {

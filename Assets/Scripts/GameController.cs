@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour {
     private int uiPressed;
 
     public GameObject playerUnitPrefab;
+    public GameObject enemyUnitPrefab;
 
     // Use this for initialization
     void Start() {
@@ -71,11 +72,22 @@ public class GameController : MonoBehaviour {
         Vector3 startLocation = GetComponent<LevelGenerator>().GenerateLevel(6, 6);
         navMeshSurface.BuildNavMesh();
         preloadCount = 0;
-        debrisList = new GameObject[30];
+        debrisList = new GameObject[40];
         fogParticleController = fogParticleSystem.GetComponent<FogParticleController>();
 
         CameraSnapTo(startLocation + Vector3.up);
-        GameObject.Instantiate(playerUnitPrefab, startLocation + Vector3.up, Quaternion.identity);
+        GameObject.Instantiate(playerUnitPrefab, startLocation + Vector3.up + Vector3.left * 3, Quaternion.identity);
+        GameObject.Instantiate(playerUnitPrefab, startLocation + Vector3.up + Vector3.right * 3, Quaternion.identity);
+
+        RaycastHit hit;
+        Vector3 randomLoc;
+        for (int i = 0; i < 20; i++) {
+            do {
+                randomLoc = new Vector3(Random.Range(3, 63), 10, Random.Range(3, 63));
+            } while (Vector3.Distance(startLocation, randomLoc) < 20);
+            Physics.Raycast(randomLoc, Vector3.down, out hit, 11, ~LayerMask.GetMask("Ignore Raycast"));
+            GameObject.Instantiate(enemyUnitPrefab, hit.point + Vector3.up, Quaternion.identity);
+        }
     }
 
     // Update is called once per frame
@@ -533,8 +545,8 @@ public class GameController : MonoBehaviour {
     }
 
     void PreLoadDebris() {
-        if (preloadCount < 30) {
-            debrisList[preloadCount] = Instantiate(debrisCubePrefab, new Vector3(2 * preloadCount, 20, -20), Quaternion.identity);
+        if (preloadCount < 40) {
+            debrisList[preloadCount] = Instantiate(debrisCubePrefab, new Vector3(10 + 1.1f * preloadCount, -2, 10), Quaternion.identity);
             preloadCount++;
         }
     }
@@ -544,7 +556,7 @@ public class GameController : MonoBehaviour {
             preloadCount--;
             return debrisList[preloadCount];
         } else {
-            return Instantiate(debrisCubePrefab, new Vector3(0, 40, 0), Quaternion.identity);
+            return Instantiate(debrisCubePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         }
     }
 
