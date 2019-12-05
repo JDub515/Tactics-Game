@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc21e8c43d5ada418e7cd1b5628b87c, type: 3}
+  m_Name: Launcher Trigger - 08bd1dcc
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidBytes: cc1dbd080f4a7f459b1c4b27a454f9f8
+  _name:
+    _key: e2f1144b-b45b-465d-a3ef-4f7f76d794ba

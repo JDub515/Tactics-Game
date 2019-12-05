@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc21e8c43d5ada418e7cd1b5628b87c, type: 3}
+  m_Name: Launcher Propulsion - 611836ef
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidBytes: ef361861b0abf543b3e07fe3aadded26
+  _name:
+    _key: ec7ed350-b2ff-4187-8db3-8e353f79d315

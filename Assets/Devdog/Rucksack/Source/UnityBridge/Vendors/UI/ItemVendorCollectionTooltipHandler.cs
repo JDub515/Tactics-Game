@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections;
+using Devdog.Rucksack.Items;
+using Devdog.Rucksack.Vendors;
+using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.EventSystems;
+
+namespace Devdog.Rucksack.UI
+{
+    public sealed class ItemVendorCollectionTooltipHandler : MonoBehaviour, ICollectionSlotInputHandler<IVendorProduct<IItemInstance>>, IPointerEnterHandler, IPointerExitHandler
+    {
+        private ItemTooltipUI _tooltip;
+        private CollectionSlotUIBase<IVendorProduct<IItemInstance>> _slot;
+
+        private readonly ILogger _logger;
+        private Coroutine _checkIfItemIsGoneCoroutine;
+        
+        private ItemVendorCollectionTooltipHandler()
+        {
+            _logger = _logger ?? new UnityLogger("[UI][Collection] ");
+        }
+
+        private void Awake()
+        {
+            _slot = GetComponent<CollectionSlotUIBase<IVendorProduct<IItemInstance>>>();
+            Assert.IsNotNull(_slot, "No SlotUI found on input handler!");
+        }
+        
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (_tooltip == null)
+            {
+                _tooltip = FindObjectOfType<ItemTooltipUI>();
+            }
+
+            if (_slot.current != null)
+            {
+                if (_checkIfItemIsGoneCoroutine != null)
+                {
+                    StopCoroutine(_checkIfItemIsGoneCoroutine);
+                }
+
+                _checkIfItemIsGoneCoroutine = StartCoroutine(CheckIfItemIsGone());
+                _tooltip.Repaint(_slot.current.item as IUnityItemInstance, _slot.collection.GetAmount(_slot.collectionIndex), eventData);
+            }
+        }
+
+        private IEnumerator CheckIfItemIsGone()
+        {
+            while (true)
+            {
+                yield return null;
+                
+                if (_slot.current == null)
+                {
+                    OnPointerExit(new PointerEventData(EventSystem.current)
+                    {
+                        position = Input.mousePosition,
+                    });
+                }
+            }
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            if (_checkIfItemIsGoneCoroutine != null)
+            {
+                StopCoroutine(_checkIfItemIsGoneCoroutine);
+            }
+            
+            if (_tooltip == null)
+            {
+                _tooltip = FindObjectOfType<ItemTooltipUI>();
+            }
+
+            _tooltip.Repaint(null, 0, eventData);
+        }
+    }
+}

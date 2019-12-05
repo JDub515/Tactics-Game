@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: b3ec48b015ed6ef49b817dacefc26a47
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - visualizationPrefab: {fileID: 1571716461351790, guid: ac420966ff6c3bc498e58c9585a5d12e,
+      type: 3}
+  - ricochetLaserPrefab: {fileID: 1363439739290302, guid: 37e9c2cfdd8e54f4186a241a2a496c95,
+      type: 3}
+  - bouncingBombPrefab: {fileID: 1723811787521926, guid: 05b4e84d4927dc04dad796417395b3bd,
+      type: 3}
+  - rollingBombPrefab: {fileID: 1822763592, guid: c17fcda08b2808f47b31e764d21ce9ee,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

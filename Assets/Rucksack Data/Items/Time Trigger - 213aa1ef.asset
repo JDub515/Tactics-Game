@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b91f0ab6695d84f8d827d6760e10f2, type: 3}
+  m_Name: Time Trigger - 213aa1ef
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 0}
+  _guid:
+    _guidBytes: efa13a216ddc404fa5bc0edd4ab05ee5
+  _name:
+    _key: 802d72fd-af97-451f-900b-f534b50e44ec
+  _description:
+    _key: f2bfdf47-d286-4c83-9d0b-b7e9018d4617
+  _maxStackSize: 1
+  _layoutShape:
+    _shape:
+    - cols: 01
+  _buyPrice: []
+  _sellPrice: []
+  _weight: 0
+  _icon: {fileID: 21300000, guid: c65c4d7824e6f0148a1740e43ecb4151, type: 3}
+  _worldModel: {fileID: 0}
+  _equipmentType: {fileID: 11400000, guid: 719c8afe7b5302346a66c6607f97f0b9, type: 2}
+  _mountPoint: 
+  _equipmentModel: {fileID: 0}
+  _stats:
+  - Time
+  _statStartValue:
+  - 5
+  _statIncrementValue:
+  - 1
+  _componentSlots: []

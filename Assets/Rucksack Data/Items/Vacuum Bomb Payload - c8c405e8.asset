@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b91f0ab6695d84f8d827d6760e10f2, type: 3}
+  m_Name: Vacuum Bomb Payload - c8c405e8
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 0}
+  _guid:
+    _guidBytes: e805c4c851aebb429a14561687b37cdc
+  _name:
+    _key: f67fc4c8-9919-40ad-9790-5a3d861c76fc
+  _description:
+    _key: 31eda303-0c77-49d6-9c8f-cf5dbd1d7523
+  _maxStackSize: 1
+  _layoutShape:
+    _shape:
+    - cols: 01
+  _buyPrice: []
+  _sellPrice: []
+  _weight: 0
+  _icon: {fileID: 21300000, guid: c587bb7402a5adf419a7ca5a5f57de0d, type: 3}
+  _worldModel: {fileID: 0}
+  _equipmentType: {fileID: 11400000, guid: 5d63374a8fdae6e4eab9921be64648f9, type: 2}
+  _mountPoint: 
+  _equipmentModel: {fileID: 0}
+  _stats:
+  - Power
+  - Falloff
+  _statStartValue:
+  - 1
+  - 2
+  _statIncrementValue:
+  - 1
+  - -0.05
+  _componentSlots: []

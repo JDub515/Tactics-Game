@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b91f0ab6695d84f8d827d6760e10f2, type: 3}
+  m_Name: Launcher Frame - 1cea55fe
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 0}
+  _guid:
+    _guidBytes: fe55ea1c974d8149a32e721a3a62117d
+  _name:
+    _key: 6a1ef911-3e8f-4bac-91bb-7acb1de5e197
+  _description:
+    _key: 1188eafd-2e7d-4848-bb2f-7839993917e0
+  _maxStackSize: 1
+  _layoutShape:
+    _shape:
+    - cols: 0101
+    - cols: 0101
+    - cols: 0101
+  _buyPrice: []
+  _sellPrice: []
+  _weight: 0
+  _icon: {fileID: 21300000, guid: 3dbc8dddb7942e54b8369cd8874d1bbb, type: 3}
+  _worldModel: {fileID: 0}
+  _equipmentType: {fileID: 11400000, guid: 774e6d07c2054a2418c9629e93835708, type: 2}
+  _mountPoint: 
+  _equipmentModel: {fileID: 0}
+  _stats: []
+  _statStartValue: []
+  _statIncrementValue: []
+  _componentSlots:
+  - {fileID: 11400000, guid: 5d63374a8fdae6e4eab9921be64648f9, type: 2}
+  - {fileID: 11400000, guid: 8acfa484646d23645a7664092261f858, type: 2}
+  - {fileID: 11400000, guid: 719c8afe7b5302346a66c6607f97f0b9, type: 2}
