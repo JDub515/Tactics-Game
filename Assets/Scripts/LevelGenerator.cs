@@ -14,6 +14,8 @@ public class LevelGenerator : MonoBehaviour {
     private int[,] connectionGraph;
 
     public Vector3 GenerateLevel(int xSize, int zSize) {
+        Transform levelContainer = GameObject.Find("Level Container").transform;
+
         int[,] heightIndex = new int[xSize, zSize];
 
         connectionGraph = new int[xSize, zSize];
@@ -82,7 +84,7 @@ public class LevelGenerator : MonoBehaviour {
             tileLocation = new Vector3(7 + 10 * i, 0, 7 + 10 * j);
 
             if (height != 0) {
-                GameObject.Instantiate(floors[height - 1], tileLocation, Quaternion.identity);
+                GameObject.Instantiate(floors[height - 1], tileLocation, Quaternion.identity, levelContainer);
             }
 
             importantTransitionDirections.Clear();
@@ -145,28 +147,28 @@ public class LevelGenerator : MonoBehaviour {
                 Vector3 chosenDirection;
                 if (Random.Range(0, importantTransitionDirections.Count + importantTransitionDirections2.Count) < importantTransitionDirections.Count) {
                     chosenDirection = importantTransitionDirections[Random.Range(0, importantTransitionDirections.Count)];
-                    GameObject.Instantiate(floorTransitions[Random.Range(0, floorTransitions.Length)], tileLocation, Quaternion.FromToRotation(Vector3.right, -chosenDirection));
+                    GameObject.Instantiate(floorTransitions[Random.Range(0, floorTransitions.Length)], tileLocation, Quaternion.FromToRotation(Vector3.right, -chosenDirection), levelContainer);
                 } else {
                     chosenDirection = importantTransitionDirections2[Random.Range(0, importantTransitionDirections2.Count)];
-                    GameObject.Instantiate(floorTransitions2[Random.Range(0, floorTransitions2.Length)], tileLocation, Quaternion.FromToRotation(Vector3.right, -chosenDirection));
+                    GameObject.Instantiate(floorTransitions2[Random.Range(0, floorTransitions2.Length)], tileLocation, Quaternion.FromToRotation(Vector3.right, -chosenDirection), levelContainer);
                 }
                 ConnectLevels(connectionGraph[i, j], connectionGraph[i + (int)chosenDirection.x, j + (int)chosenDirection.z]);
             } else if (j == 0 && startLocation == Vector3.zero) {
                 startLocation = tileLocation;
             } else if (j == zSize - 1 && !placedExit) {
-                GameObject.Instantiate(levelExit, tileLocation, Quaternion.Euler(new Vector3(0, 90 * Random.Range(0, 4), 0)));
+                GameObject.Instantiate(levelExit, tileLocation, Quaternion.Euler(new Vector3(0, 90 * Random.Range(0, 4), 0)), levelContainer);
                 placedExit = true;
             } else if (Random.Range(0, (int)Mathf.Pow(transitionDirections.Count + transitionDirections2.Count, 2) + 2) > 1) {
                 if (Random.Range(0, transitionDirections.Count + transitionDirections2.Count) < transitionDirections.Count) {
-                    GameObject.Instantiate(floorTransitions[Random.Range(0, floorTransitions.Length)], tileLocation, Quaternion.FromToRotation(Vector3.right, -transitionDirections[Random.Range(0, transitionDirections.Count)]));
+                    GameObject.Instantiate(floorTransitions[Random.Range(0, floorTransitions.Length)], tileLocation, Quaternion.FromToRotation(Vector3.right, -transitionDirections[Random.Range(0, transitionDirections.Count)]), levelContainer);
                 } else {
-                    GameObject.Instantiate(floorTransitions2[Random.Range(0, floorTransitions2.Length)], tileLocation, Quaternion.FromToRotation(Vector3.right, -transitionDirections2[Random.Range(0, transitionDirections2.Count)]));
+                    GameObject.Instantiate(floorTransitions2[Random.Range(0, floorTransitions2.Length)], tileLocation, Quaternion.FromToRotation(Vector3.right, -transitionDirections2[Random.Range(0, transitionDirections2.Count)]), levelContainer);
                 }
             } else {
                 if (height != 2 && Random.Range(0, lowOnlyTiles.Length + basicTiles.Length) < lowOnlyTiles.Length) {
-                    GameObject.Instantiate(lowOnlyTiles[Random.Range(0, lowOnlyTiles.Length)], tileLocation, Quaternion.Euler(new Vector3(0, 90 * Random.Range(0, 4), 0)));
+                    GameObject.Instantiate(lowOnlyTiles[Random.Range(0, lowOnlyTiles.Length)], tileLocation, Quaternion.Euler(new Vector3(0, 90 * Random.Range(0, 4), 0)), levelContainer);
                 } else {
-                    GameObject.Instantiate(basicTiles[Random.Range(0, basicTiles.Length)], tileLocation, Quaternion.Euler(new Vector3(0, 90 * Random.Range(0, 4), 0)));
+                    GameObject.Instantiate(basicTiles[Random.Range(0, basicTiles.Length)], tileLocation, Quaternion.Euler(new Vector3(0, 90 * Random.Range(0, 4), 0)), levelContainer);
                 }
             }
         }

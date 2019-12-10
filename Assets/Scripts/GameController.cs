@@ -44,8 +44,8 @@ public class GameController : MonoBehaviour {
         ActionSelected,
         TargetSelected,
         ActionInProgress,
-        EnemyTurn,
-        TemporarySuspend
+        TemporarySuspend,
+        EnemyTurn
     }
 
     private States playerState;
@@ -55,6 +55,8 @@ public class GameController : MonoBehaviour {
 
     public GameObject playerUnitPrefab;
     public GameObject enemyUnitPrefab;
+
+    private GameObject warpPad;
 
     // Use this for initialization
     void Start() {
@@ -70,6 +72,7 @@ public class GameController : MonoBehaviour {
 
         playerState = States.NothingSelected;
         Vector3 startLocation = GetComponent<LevelGenerator>().GenerateLevel(6, 6);
+        warpPad = GameObject.Find("Warp Pad(Clone)");
         navMeshSurface.BuildNavMesh();
         preloadCount = 0;
         debrisList = new GameObject[40];
@@ -166,49 +169,6 @@ public class GameController : MonoBehaviour {
 
     public void HandleUI(int index) {
         uiPressed = index;
-        /*if (index >= 0 && index <= 3) {
-            if (playerState == States.UnitSelected || playerState == States.ActionSelected) {
-                resetActionTarget();
-                selectedAction = index;
-                inputUsed = true;
-                followObject = null;
-                playerState = States.ActionSelected;
-            }
-        } else if (index == 4) {
-            if (playerState == States.TargetSelected) {
-                if (selectedAction == 0) {
-                    followObject = selectedUnit;
-                    StartCoroutine("MoveUnit");
-                } else {
-                    selectedUnit.GetComponent<UnitController>().ExecuteAction(selectedAction - 1);
-                    resetActionTarget();
-                }
-                inputUsed = true;
-                confirmUI.SetActive(false);
-                endTurnUI.SetActive(false);
-                playerState = States.ActionInProgress;
-            }
-        } else if (index == 5) {
-            if (playerState == States.TargetSelected) {
-                inputUsed = true;
-                abilityUI.SetActive(true);
-                confirmUI.SetActive(false);
-                playerState = States.ActionSelected;
-            }
-        } else if (index == 6) {
-            if (playerState == States.NothingSelected || playerState == States.UnitSelected) {
-                if (playerState == States.UnitSelected) {
-                    selectedUnit.GetComponent<UnitController>().Deselect();
-                    abilityUI.SetActive(false);
-                    selectedUnit = null;
-                }
-                abilityUI.SetActive(false);
-                confirmUI.SetActive(false);
-                endTurnUI.SetActive(false);
-                StartCoroutine("EnemyTurn");
-                playerState = States.EnemyTurn;
-            }
-        }*/
     }
 
     void UnitSelect() {
@@ -251,7 +211,13 @@ public class GameController : MonoBehaviour {
             confirmUI.SetActive(false);
             endTurnUI.SetActive(false);
             playerState = States.EnemyTurn;
-            StartCoroutine("EnemyTurn");
+            foreach (GameObject unit in UnitController.playerUnits) {
+                if (!unit.GetComponent<CapsuleCollider>().bounds.Intersects(warpPad.transform.GetChild(0).GetChild(0).GetComponent<BoxCollider>().bounds)) {
+                    StartCoroutine("EnemyTurn");
+                    return;
+                }
+            }
+            StartCoroutine("NextLevel");
         }
     }
 
@@ -541,7 +507,7 @@ public class GameController : MonoBehaviour {
             i++;
         }
         Physics.SphereCast(corners[corners.Count - 1] + Vector3.up, .49f, Vector3.down, out hit, 2, LayerMask.GetMask(new string[3] { "Debris", "Swapable Object", "Indestructable Terrain" }));
-        corners[corners.Count - 1] += Vector3.down * (hit.distance - .49f);
+        corners[corners.Count - 1] += Vector3.down * (hit.distance - .51f);
     }
 
     void PreLoadDebris() {
@@ -632,5 +598,17 @@ public class GameController : MonoBehaviour {
         selectedUnit = null;
         endTurnUI.SetActive(true);
         playerState = States.NothingSelected;
+    }
+
+    IEnumerator NextLevel() {
+        followObject = warpPad;
+        Rigidbody rb = warpPad.GetComponentInChildren<Rigidbody>();
+        foreach (GameObject unit in UnitController.playerUnits) {
+            unit.GetComponent<UnitController>().StartCoroutine("TempInvinicibility", 3f);
+        }
+        while (warpPad.transform.position.y < 40) {
+            rb.MovePosition(rb.position + 3 * Vector3.up * Time.fixedDeltaTime);
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

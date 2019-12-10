@@ -193,7 +193,7 @@ public class EnemyController : BaseUnitController {
             i++;
         }
         Physics.SphereCast(corners[corners.Count - 1] + Vector3.up, .49f, Vector3.down, out hit, 2, LayerMask.GetMask(new string[3] { "Debris", "Swapable Object", "Indestructable Terrain" }));
-        corners[corners.Count - 1] += Vector3.down * (hit.distance - .49f);
+        corners[corners.Count - 1] += Vector3.down * (hit.distance - .51f);
     }
 
     void ShortenPath() {
