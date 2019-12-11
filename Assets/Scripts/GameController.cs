@@ -207,6 +207,7 @@ public class GameController : MonoBehaviour {
                 abilityUI.SetActive(false);
                 selectedUnit = null;
             }
+            TooltipController.ManualUpdate();
             abilityUI.SetActive(false);
             confirmUI.SetActive(false);
             endTurnUI.SetActive(false);
@@ -314,6 +315,7 @@ public class GameController : MonoBehaviour {
             if (playerState == States.UnitSelected) {
                 selectedUnit.GetComponent<UnitController>().Deselect();
                 selectedUnit = null;
+                TooltipController.ManualUpdate();
                 abilityUI.SetActive(false);
                 playerState = States.NothingSelected;
             } else if (playerState == States.ActionSelected) {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3f70e8a76806945b1b862c0334a021, type: 3}
   m_Name: MainLanguageDb
   m_EditorClassIdentifier: 
-  _serializedJsonString: '{"_lang":"en-US","_localizedStrings":{"c70bbcd6-dfb5-4c2a-ac34-f5f1e0d37566":"D","d299480b-0f27-437d-98e2-d45b14fc8c36":"S","4473f4a1-d080-4b88-a443-a14726c89901":"Launcher
+  _serializedJsonString: '{"_lang":"en-US","_localizedStrings":{"NO_KEY":"","c70bbcd6-dfb5-4c2a-ac34-f5f1e0d37566":"D","d299480b-0f27-437d-98e2-d45b14fc8c36":"S","4473f4a1-d080-4b88-a443-a14726c89901":"Launcher
     Frame","d30ff8f9-f147-4426-95a1-99ecc02dcdc7":"A basic weapon frame that allows
     the launching of a variety of physical payloads.","dda49666-a390-467c-9b23-e1a96ba5fca2":"Laser
     Frame","9e10bd78-4793-426f-b5f7-e38b7042f04e":"A basic laser frame that allows

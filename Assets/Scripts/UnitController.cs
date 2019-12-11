@@ -20,7 +20,7 @@ public class UnitController : BaseUnitController {
 
     public static List<GameObject> playerUnits = new List<GameObject>();
 
-    private Collection<IItemInstance> equipment;
+    public Collection<IItemInstance> equipment;
 
     private Image energyBar;
 
